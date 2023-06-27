@@ -5,99 +5,104 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/ac742855a0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
+    
     <section class="hero is-bold is-small is-primary">
         <div class="hero-body">
             <p class="title">Weather Dashboard</p>
         </div>
     </section>
     <main>
-
         <div class="columns">
-
             <div class="column is-one-quarter has-background-light m-3">
                 <label class="label p-3">Search for a city:</label>
                 <div class="control p-3">
-                    <input id="cityInput" class="input cityInput" type="text" placeholder="City Name">
+                    <input id="cityInput" class="input" type="text" placeholder="City Name">
                 </div>
                 <div class="control p-3">
-                    <button id="cityInputBtn" class="button cityInputButton is-fullwidth is-primary">Submit</button>
-                  </div>
+                    <button id="cityInputBtn" class="button is-fullwidth is-primary">Submit</button>
+                </div>
+                <progress class="progress is-small" value="0" max="100"></progress>
+                <p class="label">Previously searched cities:</p>
+                <div id="previousSearches" class="column p-3">
+                    <button id="justatest" class="button is-fullwidth is-link is-small mb-1">TEST</button>
+                </div>
             </div>
 
             <div class="column is-auto">
-
-                <div class="box currentWeatherBox">                  
-                    <p class="title currentCity is-4">Nashville (7/7/2077)</p>
+                <div class="box currentWeatherBox">
+                    <p id="currentCity" class="title is-4">Current City</p>
+                    <img id="currentIcon" src="">         
                     <ul>
-                        <li class="pb-2" id="currentTemp">temp: </li>
-                        <li class="pb-2" id="currentWind">wind: </li>
-                        <li class="pb-2" id="currentHumid">humidity: </li>
+                        <li class="pb-2 has-text-weight-semibold" id="currentWind"></li>
+                        <li class="pb-2 has-text-weight-semibold" id="currentHumid"></li>
+                        <li class="pb-2 has-text-weight-semibold" id="currentTemp"></li>
                     </ul>
                 </div>
 
                 <div class="box">
                     <p class="title fiveDay is-4 ">5-Day Forecast:</p>
-
                     <div class="columns">
                         <div class="column">
                             <div class="box">
-                                <p>07/22/2023</p>
-                                <i class="fa-solid fa-poo-storm fa-xl"></i>
-                                <p>Temp: 75</p>
-                                <p>Wind: 15 MPH</p>
-                                <p>Humidity: We  Chilling/p>
+                                <p id="fiveDate1"></p>
+                                <img id="fiveIcon1" src="">
+                                <p id="fiveTemp1">Temp: </p>
+                                <p id="fiveWind1">Wind: </p>
+                                <p id="fiveHumid1">Humidity: </p>
                             </div>
                         </div>
                         <div class="column">
                             <div class="box">
-                                <p>07/23/2023</p>
-                                <i class="fa-solid fa-poo-storm fa-xl"></i>
-                                <p>Temp: 75</p>
-                                <p>Wind: 15 MPH</p>
-                                <p>Humidity: We  Chilling/p>
+                                <p id="fiveDate2"></p>
+                                <img id="fiveIcon2" src="">
+                                <p id="fiveTemp2">Temp: </p>
+                                <p id="fiveWind2">Wind: </p>
+                                <p id="fiveHumid2">Humidity: </p>
                             </div>
                         </div>
                         <div class="column">
                             <div class="box">
-                                <p>07/24/2023</p>
-                                <i class="fa-solid fa-poo-storm fa-xl"></i>
-                                <p>Temp: 75</p>
-                                <p>Wind: 15 MPH</p>
-                                <p>Humidity: We  Chilling/p>
+                                <p id="fiveDate3"></p>
+                                <img id="fiveIcon3" src="">
+                                <p id="fiveTemp3">Temp: </p>
+                                <p id="fiveWind3">Wind: </p>
+                                <p id="fiveHumid3">Humidity: </p>
                             </div>
                         </div>
                         <div class="column">
                             <div class="box">
-                                <p>07/25/2023</p>
-                                <i class="fa-solid fa-poo-storm fa-xl"></i>
-                                <p>Temp: 75</p>
-                                <p>Wind: 15 MPH</p>
-                                <p>Humidity: We  Chilling/p>
+                                <p id="fiveDate4"></p>
+                                <img id="fiveIcon4" src="">
+                                <p id="fiveTemp4">Temp: </p>
+                                <p id="fiveWind4">Wind: </p>
+                                <p id="fiveHumid4">Humidity: </p>
                             </div>
                         </div>
                         <div class="column">
                             <div class="box">
-                                <p>07/26/2023</p>
-                                <i class="fa-solid fa-poo-storm fa-xl"></i>
-                                <p>Temp: 75</p>
-                                <p>Wind: 15 MPH</p>
-                                <p>Humidity: We  Chilling/p>
+                                <p id="fiveDate5"></p>
+                                <img id="fiveIcon5" src="">
+                                <p id="fiveTemp5">Temp: </p>
+                                <p id="fiveWind5">Wind: </p>
+                                <p id="fiveHumid5">Humidity: </p>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-
         </div>
     </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
