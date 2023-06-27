@@ -5,11 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
 
+    <section class="hero is-small is-primary">
+        <div class="hero-body">
+            <p class="title">Weather Dashboard</p>
+        </div>
+    </section>
+    <main>
+
+        <div class="columns">
+
+            <div class="column is-one-quarter has-background-light m-3">
+                <label class="label p-3">Search for a city:</label>
+                <div class="control p-3">
+                    <input class="input cityInput" type="text" placeholder="Text input">
+                </div>
+                <div class="control p-3">
+                    <button class="button cityInputButton is-primary">Submit</button>
+                  </div>
+            </div>
+
+            <div class="column is-auto">
+
+                <div class="box currentWeatherBox">                  
+                    <p class="title currentCity is-4">Nashville (7/7/2077)</p>
+                    <ul>
+                        <li class="pb-3" id="currentTemp">temp: </li>
+                        <li class="pb-3" id="currentWind">wind: </li>
+                        <li class="pb-3" id="currentHumid">humidity: </li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <p class="title fiveDay is-4 ">5-Day Forecast:</p>
+
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box"></div>
+                        </div>
+                        <div class="column">
+                            <div class="box"></div>
+                        </div>
+                        <div class="column">
+                            <div class="box"></div>
+                        </div>
+                        <div class="column">
+                            <div class="box"></div>
+                        </div>
+                        <div class="column">
+                            <div class="box"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </main>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
