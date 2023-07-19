@@ -156,19 +156,38 @@ function addPrevSearch(inp) {
 
 
 function addLocal(inputCity) {
-  if (!localStorage.getItem("city")) {
-    cityStorage = [];
-    cityStorage.push({ city: inputCity });
-    localStorage.setItem("city", JSON.stringify(cityStorage));
-  } else {
-    cityStorage = JSON.parse(localStorage.getItem("city"));
-    cityStorage.push({ city: inputCity });
-    localStorage.setItem("city", JSON.stringify(cityStorage));
-  }
+    
+    if (!localStorage.getItem("city")) {
+        cityStorage = [];
+        cityStorage.push({inputCity});
+        localStorage.setItem("city", JSON.stringify(cityStorage));
+    } else if (!localStorage.getItem("city").includes(inputCity)) {
+        cityStorage = JSON.parse(localStorage.getItem("city"));
+        cityStorage.push({inputCity});
+        localStorage.setItem("city",JSON.stringify(cityStorage));
+    }
+};
 
-  //  else {
-  //     cityStorage = JSON.parse(localStorage.getItem("city"));
-  //     cityStorage.push({city: inputCity});
-  //     localStorage.setItem("city", JSON.stringify(cityStorage));
-  // }
+
+var prevLS = [];
+function addPrev() {
+    var prevLS = JSON.parse(localStorage.getItem("city"));
+    for (let i = 0; i < prevLS.length; i++) {
+        var prevSearchEl = $('<button class="button is-fullwidth is-link is-small mb-1 prevButton">' + prevLS[i].inputCity + '</button>');
+        $("#previousSearches").append(prevSearchEl);
+
+        // $(".prevButton").on("click", function() {
+        //     console.log("test");
+        // })
+
+    }
+
 }
+
+
+addPrev();
+
+$(".prevButton").on("click", function() {
+    inputCity = ($(this).text());
+    getCoords($(this).text());
+});
